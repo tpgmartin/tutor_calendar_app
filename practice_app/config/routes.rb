@@ -1,5 +1,6 @@
 PracticeApp::Application.routes.draw do
   resources :events
+  root to: 'events#main'
 
 
   # The priority is based upon order of creation:
