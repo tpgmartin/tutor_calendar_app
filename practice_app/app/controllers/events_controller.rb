@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @event = Event.all
+    @events_by_date = @event.group_by(&:date) # Want to change &:date 
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
   def show
