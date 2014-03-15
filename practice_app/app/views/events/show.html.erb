@@ -1,40 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @event.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @event.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= @event.date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start_time) %>:</strong></dt>
+  <dd><%= @event.start_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:end_time) %>:</strong></dt>
+  <dd><%= @event.end_time %></dd>
+</dl>
 
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @event.created_at %>
-</p>
-
-<p>
-  <b>Updated at:</b>
-  <%= @event.updated_at %>
-</p>
-
-<p>
-  <b>Start time:</b>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <b>End time:</b>
-  <%= @event.end_time %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              events_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_event_path(@event), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              event_path(@event),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
