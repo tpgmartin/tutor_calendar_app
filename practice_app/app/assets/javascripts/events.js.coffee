@@ -5,3 +5,7 @@
 jQuery ->
   $('#event_date').datepicker
     dateFormat: 'yy-mm-dd'
+  
+  $('#event_start_time').timespinner()
+
+  $('#event_end_time')
