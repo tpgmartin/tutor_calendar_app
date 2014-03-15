@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_filter :authorize, only: [:edit, :update]
+
   def index
     @event = Event.all
     @events_by_date = @event.group_by(&:date) # Want to change &:date 
@@ -10,8 +12,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
     @event = Event.new
   end
