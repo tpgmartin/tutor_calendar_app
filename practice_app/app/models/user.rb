@@ -1,9 +1,19 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation
   has_secure_password
   validates_uniqueness_of :email
   validates_presence_of :password, :on => :create
   before_create { generate_token(:auth_token) }
+
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
+  end
 
   def generate_token(column)
     begin
