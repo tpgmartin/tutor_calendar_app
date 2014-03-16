@@ -8,8 +8,10 @@ PracticeApp::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # DO care if the mailer can't send - raise error if email fails to be delivered
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -31,5 +33,6 @@ PracticeApp::Application.configure do
   config.assets.debug = true
 
   # Add a similar line to production.rb with the live domain name
+  # Specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
 end

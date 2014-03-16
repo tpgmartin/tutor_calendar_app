@@ -24,6 +24,8 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'letter_opener', :group => :development
+
 gem 'jquery-rails'
 
 gem 'simple_form'
