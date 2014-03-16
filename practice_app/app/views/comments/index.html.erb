@@ -1,0 +1,18 @@
+<h1>Comments</h1>
+
+<ul id="comments">
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+
+<h2>New Comment</h2>
+<% form_for [@commentable, Comment.new] do |form| %>
+  <ol class="formList">
+    <li>
+      <%= form.label :content %>
+      <%= form.text_area :content, :rows => 5 %>
+    </li>
+    <li><%= submit_tag "Add comment" %></li>
+  </ol>
+<% end %>

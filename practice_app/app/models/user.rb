@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation
   has_secure_password
+  has_many :comments, :as => :commentable
+  has_many :comments, :as => :commenter
   validates_uniqueness_of :email
   validates_presence_of :password, :on => :create
   before_create { generate_token(:auth_token) }
