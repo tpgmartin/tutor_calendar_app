@@ -24,8 +24,7 @@
             <li><%= link_to "New Lesson", new_event_path %></li>
             <li><%= link_to "Contact Us" %></li>
             <% if current_user %>
-            <!-- Change these for added session cookies etc. -->
-            <li><%= link_to "Logged in as #{current_user.first_name} #{current_user.last_name}", logout_path %></li>
+            <li><%= link_to "Logged in as #{current_user.first_name} #{current_user.last_name}", current_user %></li>
             <li><%= link_to "Log Out", session_path("current"), method: "delete" %></li> 
             <% else %>
             <li><%= link_to "Sign Up", signup_path %></li>
