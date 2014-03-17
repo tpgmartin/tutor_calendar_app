@@ -8,6 +8,7 @@ PracticeApp::Application.routes.draw do
   resources :sessions
   resources :users, :has_many => :comments
   resources :password_resets
+  resources :relationships
   root to: 'events#index'
   resources :events, :has_many => :comments
 
