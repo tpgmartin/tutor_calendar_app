@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation
+  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url
   has_secure_password
   has_many :comments, :as => :commentable
   has_many :comments, :as => :commenter
+  validates_presence_of :email
   validates_uniqueness_of :email
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})\Z/
   validates_presence_of :password, :on => :create
   before_create { generate_token(:auth_token) }
 

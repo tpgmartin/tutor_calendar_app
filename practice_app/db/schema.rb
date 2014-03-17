@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140316154505) do
+ActiveRecord::Schema.define(:version => 20140317163318) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140316154505) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "avatar_url"
   end
 
 end
