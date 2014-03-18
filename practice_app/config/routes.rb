@@ -6,6 +6,7 @@ PracticeApp::Application.routes.draw do
   
   resources :sessions
   resources :users do
+    resources :events
     resources :comments
   end
   resources :password_resets
