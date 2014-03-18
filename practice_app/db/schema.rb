@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318130714) do
+ActiveRecord::Schema.define(:version => 20140318135355) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20140318130714) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "avatar_url"
+    t.string   "role"
   end
 
 end

@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   # Filters
   before_create { generate_token(:auth_token) }
 
+  def role?(role)
+    self.role.to_s == role.to_s
+  end
+
   def full_name
     [first_name, last_name].join(' ')
   end

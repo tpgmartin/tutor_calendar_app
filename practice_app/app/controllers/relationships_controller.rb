@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  load_and_authorize_resource
   def create
     @relationship = current_user.relationships.build(:relation_id => params[:relation_id])
     if @relationship.save

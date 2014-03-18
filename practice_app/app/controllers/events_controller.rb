@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+  load_and_authorize_resource
   before_filter :authorize, only: [:edit, :update]
 
   def index
