@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url
+  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url, :role
   has_secure_password
   # Associations
   has_many :relationships
@@ -14,10 +14,16 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   # Filters
   before_create { generate_token(:auth_token) }
+  # Embedded associations
+  ROLES = %w[admin parent student tutor guest]
 
-  def role?(role)
-    self.role.to_s == role.to_s
+  def role_symbols
+    [role.to_sym]
   end
+
+  # def role?(role)
+  #   self.role.to_s == role.to_s
+  # end
 
   def full_name
     [first_name, last_name].join(' ')
