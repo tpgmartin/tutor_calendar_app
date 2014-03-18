@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(:version => 20140317211816) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["commenter_id", "commenter_type"], :name => "index_comments_on_commenter_id_and_commenter_type"
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"

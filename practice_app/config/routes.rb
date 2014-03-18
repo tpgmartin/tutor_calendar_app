@@ -6,10 +6,14 @@ PracticeApp::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   resources :sessions
-  resources :users, :has_many => :comments
+  resources :users do
+    resources :comments
+  end
   resources :password_resets
   resources :relationships
   root to: 'events#index'
-  resources :events, :has_many => :comments
+  resources :events do
+    resources :comments
+  end
 
 end
