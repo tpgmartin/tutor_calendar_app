@@ -1,8 +1,8 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe UserMailer do
   describe "password_reset" do
-    let(:user) { Factory(:user, :password_reset_token => "anything") }
+    let(:user) { FactoryGirl.create(:user, :password_reset_token => "anything") }
     let(:mail) { UserMailer.password_reset(user) }
 
     it "sends user password reset url" do
