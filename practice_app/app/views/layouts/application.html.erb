@@ -20,9 +20,6 @@
         <a class="brand" href="../../">Tutor App</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Browse Lessons", events_path %></li>
-            <li><%= link_to "New Lesson", new_event_path %></li>
-            <li><%= link_to "Contact Us" %></li>
             <% if current_user %>
             <li><%= link_to "Logged in as #{current_user.first_name} #{current_user.last_name}", current_user %></li>
             <li><%= link_to "Log Out", session_path("current"), method: "delete" %></li> 
@@ -30,6 +27,7 @@
             <li><%= link_to "Sign Up", signup_path %></li>
             <li><%= link_to "Log In", login_path %></li>
             <% end %>
+            <li><%= link_to "Contact Us" %></li>
           </ul>
         </div>
       </div>

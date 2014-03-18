@@ -7,12 +7,10 @@ PracticeApp::Application.routes.draw do
   resources :sessions
   resources :users do
     resources :events
-    resources :comments
   end
+  resources :comments
   resources :password_resets
   resources :relationships
-  resources :events do
-    resources :comments
-  end
+  resources :events
   root to: 'welcome#index'
 end
