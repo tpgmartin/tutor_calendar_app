@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :load_commentable
   
   def index
-    @comments = @commentable.comments
+    @comments = @commentable.comments 
   end
 
   def new
@@ -21,7 +21,9 @@ class CommentsController < ApplicationController
   private
 
   def load_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
+    params.each do |name, value|
+      return @commentable = $1.classify.constantize.find(value) if name =~ /(.+)_id$/
+    end
   end
+
 end

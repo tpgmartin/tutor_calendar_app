@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :created_at, :date, :description, :end_time, :name, :start_time, :updated_at
-  has_many :comments, :as => :commentable
+  acts_as_commentable
   validates_presence_of :name, :date, :start_time, :end_time
 
   # attr_accessor :end_time, :start_time
