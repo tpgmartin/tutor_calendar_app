@@ -21,9 +21,9 @@ class User < ActiveRecord::Base
     [role.to_sym]
   end
 
-  # def role?(role)
-  #   self.role.to_s == role.to_s
-  # end
+  def role?(role)
+    self.role.to_s == role.to_s
+  end
 
   def full_name
     [first_name, last_name].join(' ')
