@@ -1,6 +1,5 @@
 class Relationship < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked owner: ->(controller, model) { controller && controller.current_user }
+  include PublicActivity::Common
   
   attr_accessible :relation_id, :user_id
 

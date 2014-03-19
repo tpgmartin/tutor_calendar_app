@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+  updated comment on <%= link_to activity.trackable.event.name, activity.trackable.event %> on <%= activity.trackable.event.updated_at %> 
+<% else %>
+  comment has been deleted
+<% end %>

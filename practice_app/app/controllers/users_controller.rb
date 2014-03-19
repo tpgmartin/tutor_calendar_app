@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.relation_ids, owner_type: "User")
     # @comment = Comment.new(user: @user)
   end
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
-      @comment.create_activity :create, owner: current_user
+      @user.create_activity :create, owner: current_user
       cookies[:auth_token] = @user.auth_token
       redirect_to @user, notice: "Thank you for signing up!"
     else

@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+  connected with <%= activity.trackable.user_id %>  on <%= activity.trackable.created_at %> 
+<% else %>
+  contact deleted
+<% end %>

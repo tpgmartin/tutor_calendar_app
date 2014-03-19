@@ -19,6 +19,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     if @event.save
+      @event.create_activity :create, owner: current_user
       redirect_to @event, notice: "Event created."
     else
       render :new
@@ -32,6 +33,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
+      @event.create_activity :update, owner: current_user
       redirect_to @event, notice: 'Event updated.'
     else
       render action: "edit" 
@@ -41,6 +43,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
+    @event.create_activity :destroy, owner: current_user
     redirect_to events_url 
   end
 end
