@@ -1,8 +1,20 @@
 <%= render :partial => '/submenu' %>
 
-<h1><%= @user.full_name %></h1>
+<div  class="page-header" >
+  <div style="display:inline-block;"><%= image_tag avatar_url(@user) %></div>
+  <div style="display:inline-block"><h1><%= @user.full_name %></h1></div>
+</div>
 
-<div><%= image_tag avatar_url(@user) %></div>
+<div>
+  <p><b>Email:</b> <%= @user.email %></p> <!-- Add option to email user -->
+  <p><b>Member Since:</b> <%= @user.created_at %></p> <!-- Want to change datetime format -->
+  <p><b>Profile: </b> <%= @user.role %></p>
+  <p><b>Bio:</b> <!-- Put an editable field here --> </p>
+</div>
+
+<hr>
+
+<h2>Activity</h2>
 
 <h2>Contacts</h2>
 <ul>

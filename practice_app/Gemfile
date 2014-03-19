@@ -26,6 +26,10 @@ end
 
 gem 'letter_opener', :group => :development
 
+group :development do
+  gem "better_errors"
+end
+
 gem 'jquery-rails'
 
 gem 'simple_form'

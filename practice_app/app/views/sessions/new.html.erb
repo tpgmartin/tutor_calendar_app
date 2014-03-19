@@ -1,18 +1,18 @@
-<h1>Log In</h1>
+<div class="page-header"><h1>Log In</h1></div>
 
 <%= form_tag sessions_path do %>
 <div class="field">
-  <%= label_tag :email %><br />
-  <%= text_field_tag :email, params[:email] %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, params[:email] %><br><br>
 </div>
 <div class="field">
-  <%= label_tag :password %><br />
-  <%= password_field_tag :password %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %><br><br>
 </div>
-<p><%= link_to "forgotten password?", new_password_reset_path %></p>
 <div class="field">
-  <%= label_tag :remember_me %>
+  <%= label_tag :remember_me, "Remember Me?" %>
   <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-</div>
-<div class="actions"><%= submit_tag "Log In" %>
+</div><br>
+<div class="actions"><%= submit_tag "Log In" %></div>
   <% end %>
+<div class="field"><%= link_to "Forgotten password?", new_password_reset_path %></div><br>

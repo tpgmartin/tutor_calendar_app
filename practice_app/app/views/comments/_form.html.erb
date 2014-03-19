@@ -3,7 +3,9 @@
     <div class="error_messages">
       <h2>Please correct the following errors.</h2>
       <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
+      <% @comment.errors.full_messages.each do |msg| %><% form_tag(:action => "update", {:class => "form"}) do %>
+        
+      <% end -%>
         <li><%= msg %></li>
       <% end %>
       </ul>
