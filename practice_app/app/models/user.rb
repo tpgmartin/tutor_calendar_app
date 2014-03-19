@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PublicActivity::Common
+  
   attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url, :role
   has_secure_password
   # Associations

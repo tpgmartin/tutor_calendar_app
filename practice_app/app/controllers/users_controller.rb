@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
+      @comment.create_activity :create, owner: current_user
       cookies[:auth_token] = @user.auth_token
       redirect_to @user, notice: "Thank you for signing up!"
     else

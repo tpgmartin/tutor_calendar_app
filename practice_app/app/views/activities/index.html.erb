@@ -1,0 +1,7 @@
+<div class="page-header"><h1>Activities</h1></div>
+<% @activities.each do |activity| %>
+  <div class="activity">
+    <%= link_to activity.owner.full_name, activity.owner if activity.owner %>
+    <%= render_activity activity %>
+  </div>
+<% end %>

@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
   attr_accessible :created_at, :date, :description, :end_time, :name, :start_time, :updated_at
   acts_as_commentable
   validates_presence_of :name, :date, :start_time, :end_time
