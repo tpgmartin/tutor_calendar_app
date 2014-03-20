@@ -5,16 +5,18 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.role? :guest
-      can :manage, :all
+      can :create, User
     end
     if user.role? :parent
-      can :manage, :all
+      can :manage, User, :user_id => user.id
+      can [:read, :update, :destroy], Relationship
+      
     end
     if user.role? :parent
       can :manage, :all
     end
     if user.role? :tutor
-      can :manage, :all
+      can :create, Relationship
     end
     if user.role? :admin
       can :manage, :all

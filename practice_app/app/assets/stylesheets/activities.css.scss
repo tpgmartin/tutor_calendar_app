@@ -3,11 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .activity {
-  border-bottom: solid 1px #CCC;
+  border-bottom: solid 1px #eeeeee;;
   padding: 16px 0;
   em {
     color: #777;
     font-size: 12px;
     padding-left: 5px;
   }
+}
+
+.activity:last-of-type {
+  border-bottom: none;
 }

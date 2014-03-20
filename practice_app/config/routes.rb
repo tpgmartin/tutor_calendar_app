@@ -9,9 +9,9 @@ PracticeApp::Application.routes.draw do
   resources :sessions
   resources :users
   resources :events, module: 'user'
+  resources :relationships, module: 'user'
   resources :comments
   resources :password_resets
-  resources :relationships
   get '/contact_us', to: 'welcome#contact_us'
   root to: 'welcome#index'
 end

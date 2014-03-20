@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @event.users << current_user
     if @event.save
       @event.create_activity :create, owner: current_user
       redirect_to @event, notice: "Event created."
@@ -32,6 +33,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event.users << current_user
     if @event.update_attributes(params[:event])
       @event.create_activity :update, owner: current_user
       redirect_to @event, notice: 'Event updated.'

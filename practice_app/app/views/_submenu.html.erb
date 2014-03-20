@@ -3,9 +3,11 @@
     <div class="container">
       <div class="nav" >
         <ul class="nav">
+          <li class="btn btn-default navbar-btn" style="margin:7px; padding:0"><%= link_to "Profile", current_user %></li>
           <li class="btn btn-default navbar-btn" style="margin:7px; padding:0"><%= link_to "Browse Lessons", events_path %></li>
           <li class="btn btn-default navbar-btn" style="margin:7px; padding:0"><%= link_to "New Lesson", new_event_path %></li>
           <li class="btn btn-default navbar-btn" style="margin:7px; padding:0"><%= link_to "Feedback", comments_path %></li>
+          <li class="btn btn-default navbar-btn" style="margin:7px; padding:0"><%= link_to "Contacts", relationships_path %></li>
         </ul>
       </div>
     </div>

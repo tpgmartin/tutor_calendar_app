@@ -21,23 +21,3 @@
       <%= render_activity activity %>
     </div>
   <% end %>
-
-<h2>Contacts</h2>
-<ul>
-  <% for relationship in @user.relationships %>
-    <li>
-      <%= relationship.relation.full_name %>
-      (<%= link_to "remove", relationship, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
-
-<!-- Want to change this link in the future -->
-<p><%= link_to "Find Contacts", users_path %></p> 
-
-<h2>Contacted by Users</h2>
-<ul>
-  <% for user in @user.inverse_relations %>
-    <li><%= user.full_name  %></li>
-  <% end %>
-</ul>

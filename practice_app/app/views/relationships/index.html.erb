@@ -1,0 +1,22 @@
+<%= render :partial => '/submenu' %>
+
+<div class="page-header" ><h1>Contacts</h1></div>
+
+<ul>
+  <% for relationship in @user.relationships %>
+    <li>
+      <%= relationship.relation.full_name %>
+      (<%= link_to "remove", relationship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<!-- Want to change this link in the future -->
+<p><%= link_to "Find Contacts", users_path %></p> 
+
+<h2>Contacted by Users</h2>
+<ul>
+  <% for user in @user.inverse_relations %>
+    <li><%= user.full_name  %></li>
+  <% end %>
+</ul>
