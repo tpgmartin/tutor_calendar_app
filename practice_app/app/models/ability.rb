@@ -9,14 +9,18 @@ class Ability
     end
     if user.role? :parent
       can :manage, User, :user_id => user.id
-      can [:read, :update, :destroy], Relationship
-      
+      can :manage, Event
+      can [:read, :update, :destroy], Relationship    
     end
     if user.role? :parent
-      can :manage, :all
+      can :manage, User, :user_id => user.id
+      can :manage, Event
+      can [:read, :update, :destroy], Relationship
     end
     if user.role? :tutor
-      can :create, Relationship
+      can :manage, User, :user_id => user.id
+      can :manage, Event
+      can :manage, Relationship
     end
     if user.role? :admin
       can :manage, :all

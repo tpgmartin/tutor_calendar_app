@@ -2,4 +2,10 @@
 
 <p>Thank you for signing up!</p>
 
-<p>To view your profile, please visit <%= user_url(@user) %></p>
+<p>To view your profile, please visit <a href="user_url(@user)"><%= user_url(@user) %></a></p>
+
+<% if @user.role == 'tutor' %>
+  <p>Your unique key is: <%= @user.id %></p>
+
+  <p>Please keep this safe, and make sure to share with your clients.</p>
+<% end %>
