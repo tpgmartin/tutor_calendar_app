@@ -23,8 +23,6 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.users << current_user
     if @event.save
-      @comments << @event.comments.create
-      @messages << Event.unread_by(@event.users)
       @event.create_activity :create, owner: current_user
       redirect_to @event, notice: "Event created."
     else

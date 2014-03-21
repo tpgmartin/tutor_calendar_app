@@ -1,5 +1,18 @@
 <% if activity.trackable %>
-  updated comment on <%= link_to activity.trackable.title, activity.trackable %> on <%= activity.trackable.updated_at %> 
+  <% case activity.trackable.class.name %>
+    <% when 'Comment' %>
+      <% case activity.trackable.commentable.class.name %>
+        <% when 'User' %>
+          updated comment on <%= link_to activity.trackable.title, user_comment_path(activity.trackable, activity.trackable.commentable) %>  on <%= activity.trackable.created_at %> 
+        <% when 'Event' %>
+          comment for <%= link_to activity.trackable.title, event_comment_path(activity.trackable, activity.trackable.commentable) %>  on <%= activity.trackable.created_at %> 
+        <% else %>
+          commented on <%= link_to activity.trackable.title, activity.trackable %>  on <%= activity.trackable.created_at %>
+      <% end %> 
+    <% else %>
+      commented on <%= link_to activity.trackable.title, activity.trackable %>  on <%= activity.trackable.created_at %> 
+  <% end %>
+
 <% else %>
   comment has been deleted
 <% end %>
