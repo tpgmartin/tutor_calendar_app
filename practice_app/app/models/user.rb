@@ -53,4 +53,9 @@ class User < ActiveRecord::Base
     save!
     UserMailer.password_reset(self).deliver
   end
+
+  def unreads
+    Event.unread_by(self) + Relationship.unread_by(self) + Comment.unread_by(self)
+  end
+
 end

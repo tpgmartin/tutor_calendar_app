@@ -1,13 +1,12 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
   before_filter :load_commentable
-  
+
   def index
     @comments = @commentable.comments 
   end
 
   def show
-    
   end
 
   def new
