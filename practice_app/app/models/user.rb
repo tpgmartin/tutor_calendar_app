@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "relation_id"
   has_many :inverse_relations, :through => :inverse_relationships, :source => :user
   has_many :comments, as: :commentable
+
+  has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  belongs_to :invitation
+
   # Gems
   acts_as_commentable
   acts_as_reader

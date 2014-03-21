@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321081223) do
+ActiveRecord::Schema.define(:version => 20140321155445) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(:version => 20140321081223) do
     t.integer "user_id"
   end
 
+  create_table "invitations", :force => true do |t|
+    t.string   "invitation"
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.string   "new"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -94,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20140321081223) do
     t.datetime "password_reset_sent_at"
     t.string   "avatar_url"
     t.string   "role"
+    t.integer  "invitation_id"
   end
 
 end
