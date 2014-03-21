@@ -10,16 +10,19 @@ class Ability
     if user.role? :parent
       can :manage, User, :user_id => user.id
       can :manage, Event
+      can :manage, Comment
       can [:read, :update, :destroy], Relationship    
     end
     if user.role? :parent
       can :manage, User, :user_id => user.id
       can :manage, Event
+      can :manage, Comment
       can [:read, :update, :destroy], Relationship
     end
     if user.role? :tutor
       can :manage, User, :user_id => user.id
       can :manage, Event
+      can :manage, Comment
       can :manage, Relationship
     end
     if user.role? :admin

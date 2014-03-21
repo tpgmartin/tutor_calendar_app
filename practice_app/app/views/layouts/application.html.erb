@@ -20,11 +20,12 @@
         </a>
         <a class="brand" href="../../">Program.me</a>
         <div class="nav-collapse">
-          <ul class="nav">
+          <ul class="nav pull-right">
             <% if current_user %>
             <li ><%= link_to "Logged in as #{current_user.first_name} #{current_user.last_name}", current_user %></li>
             <li><%= link_to "Log Out", session_path("current"), method: "delete" %></li> 
-            <% else %>
+            <li><%= link_to "Unread messages: #{Event.unread_by(current_user).count + Relationship.unread_by(current_user).count + Comment.unread_by(current_user).count}", current_user %></li>
+            <!-- <li><%#= @messages.size %></li> -->
             <li><%= link_to "Sign Up", signup_path %></li>
             <li><%= link_to "Log In", login_path %></li>
             <% end %>
