@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   has_many :relations, :through => :relationships
   has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "relation_id"
   has_many :inverse_relations, :through => :inverse_relationships, :source => :user
+  # Gems
   acts_as_commentable
+  acts_as_reader
   # Validations
   validates_presence_of :email
   validates_uniqueness_of :email

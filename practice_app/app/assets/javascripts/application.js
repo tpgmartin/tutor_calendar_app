@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.infinitescroll
 //= require twitter/bootstrap
 //= require jquery.ui.datepicker
 //= require_tree .

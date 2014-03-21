@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 
   has_and_belongs_to_many :users
   attr_accessible :created_at, :date, :description, :end_time, :name, :start_time, :updated_at
+  acts_as_readable :on => :created_at
   acts_as_commentable
   validates_presence_of :name, :date, :start_time, :end_time
 

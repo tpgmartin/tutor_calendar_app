@@ -1,6 +1,8 @@
 class Comment < ActiveRecord::Base
   include PublicActivity::Common
 
+  acts_as_readable :on => :created_at
+
   attr_accessible :comment
 
   include ActsAsCommentable::Comment
