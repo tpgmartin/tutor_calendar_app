@@ -12,9 +12,9 @@ class UserMailer < ActionMailer::Base
   end
 
   def invite_email(invitation, signup_url)
-    @user = invitation
+    @user = invitation.sender
     @sign_url  = signup_url
-    mail to: invitation.recipient_email, subject: "Invitation"
+    mail to: invitation.recipient_email, subject: "Signup Invitation"
   end
 
   # def invitation(invitation, signup_url)
