@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def user_token_exists?
-    errors.add(:base, 'Invalid user token') unless User.where(token: token).any?
+    errors.add(:base, 'Invalid user token') unless User.where(token: token).any? || ""
   end
 
   def generate_token(column)
