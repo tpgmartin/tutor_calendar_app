@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include PublicActivity::Common
   
   has_and_belongs_to_many :events
-  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url, :role
+  attr_accessible :email, :first_name, :last_name, :full_name, :password, :password_confirmation, :avatar_url, :role, :token
   has_secure_password
   # Associations
   has_many :relationships
@@ -22,10 +22,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})\Z/
   validates_presence_of :password, :on => :create
+  validate :user_token_exists?
   # Filters
+  before_save :create_user_token
+  # before_create :user_token_exists?
   before_create { generate_token(:auth_token) }
   # Embedded associations
-  ROLES = %w[admin parent student tutor guest]
+  ROLES = %w[admin parent student tutor]
 
   def role_symbols
     [role.to_sym]
@@ -43,6 +46,16 @@ class User < ActiveRecord::Base
     split = name.split(' ', 2)
     self.first_name = split.first
     self.last_name = split.last
+  end
+
+  def create_user_token
+    begin
+      self.token=SecureRandom.urlsafe_base64
+    end while self.class.exists?(token: token)
+  end
+
+  def user_token_exists?
+    errors.add(:base, 'Invalid user token') unless User.where(token: token).any?
   end
 
   def generate_token(column)

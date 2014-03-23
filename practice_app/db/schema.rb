@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140321155445) do
+ActiveRecord::Schema.define(:version => 20140323121224) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20140321155445) do
     t.string   "avatar_url"
     t.string   "role"
     t.integer  "invitation_id"
+    t.string   "token"
   end
 
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  # after_filter :check_signup
   def index
     @users = User.all
   end
@@ -25,6 +25,14 @@ class UsersController < ApplicationController
       redirect_to @user, notice: "Thank you for signing up!"
     else
       render "new"
+    end
+  end
+
+  private
+
+  def check_signup
+    authenticate_or_request_with_http_token do |token, options|
+      User.exists?(token: token)
     end
   end
 end
